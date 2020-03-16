@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket         = "sagar-terraform"
+    bucket         = "sagar-terraform-mac"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "sagar-terraform"
