@@ -1,7 +1,8 @@
 pipeline{
     agent any
     environment {
-  PATH = '$(PATH):${getTerraformPath()}'
+     tool name: 'terraform-12', type: 'terraform'   
+//   PATH = '$(PATH):${getTerraformPath()}'
 }
 
     stages{
