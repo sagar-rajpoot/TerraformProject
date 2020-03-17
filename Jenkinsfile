@@ -8,7 +8,7 @@ environment {
     stages{
         stage('terraform init'){
             steps{
-                sh "terraform init"
+                sh 'sudo terraform init'
             }
 
         }
