@@ -1,3 +1,4 @@
+
 pipeline{
     agent any
     environment {
@@ -13,27 +14,13 @@ pipeline{
 
         }
 
-        stage('terraform Apply - dev'){
+        stage('terraform apply - dev'){
             steps{
-                sh "terraform apply -var-file=dev.tfvars -auto-approve"
+                sh "terraform apply -auto-approve"
             }
 
         }
 
-        stage('terraform init -prod'){
-            steps{
-                sh returnStatus: true, script: 'terraform workspace new prod'
-                sh "terraform init"
-            }
-
-        }
-
-        stage('terraform Apply - prod'){
-            steps{
-                sh "terraform apply -var-file=prod.tfvars -auto-approve"
-            }
-
-        }
 
         stage('terraform destroy'){
             steps{
@@ -44,11 +31,10 @@ pipeline{
     }
 }
 
-
 // below code return the location ( Directory ) where terraform is installed.
+
 def getTerraformPath(){
     def tfHome = tool name: 'terraform-12', type: 'terraform'
-// def tfHome = tool name: 'terraform-12', type: 'org.jenkinsci.plugins.terraform.TerraformInstallation'
     return tfHome
 }
 
