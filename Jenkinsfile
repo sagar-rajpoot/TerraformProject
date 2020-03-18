@@ -9,21 +9,21 @@ pipeline{
             steps{
                 sh "sh returnStatus: true, script: 'terraform workspace new dev'"
                 sh "terraform init"
-            }
-            stages('terraform apply -dev'){
+                }
+        }
+        stage('terraform apply -dev'){
                 steps{
                     sh "terraform apply -var-file=dev.tfvars -auto-approve"
                 }
             }
 
-        }
-
-                stage('terraform init -prod'){
+        stage('terraform init -prod'){
             steps{
                 sh "sh returnStatus: true, script: 'terraform workspace new prod'"
                 sh "terraform init"
             }
-            stages('terraform apply -prod'){
+                }
+        stages('terraform apply -prod'){
                 steps{
                     sh "terraform apply -var-file=prod.tfvars -auto-approve"
                 }
@@ -33,7 +33,6 @@ pipeline{
 
 
     }
-}
 
 
 // below code return the location ( Directory ) where terraform is installed.
