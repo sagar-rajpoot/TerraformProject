@@ -1,4 +1,4 @@
-# Create new Load balancer test
+# Create new Load balancer..
 resource "aws_elb" "sagar_elb" {
   name            = "sagar-elb-${terraform.workspace}"
   subnets         = "${local.pub_sub_id}"
